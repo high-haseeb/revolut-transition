@@ -20,17 +20,17 @@ const TransitionPage = () => {
     }, [expanded]);
 
     return (
-        <div className="w-full h-[250vh] bg-[#4D8BCD] flex justify-center items-center overflow-x-hidden p-0 m-0">
+        <div className="m-0 flex h-[250vh] w-full items-center justify-center overflow-x-hidden overflow-y-scroll bg-[#4D8BCD] p-0 snap-parent-y-mandatory">
             <motion.img
                 src="t-img.webp"
                 width={1920}
                 height={1080}
                 alt="bg-image"
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" 
+                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" 
                 transition={expanded 
-                        ? { type: "spring", stiffness: 50, damping: 25 }
-                        : { type: "spring", stiffness: 120, damping: 15 }
-                    }
+                    ? { type: "spring", stiffness: 40, damping: 35 }
+                    : { type: "spring", stiffness: 100, damping: 25 }
+                }
                 animate={{
                     width: expanded ? "60%" : "100%",
                 }}
@@ -39,20 +39,21 @@ const TransitionPage = () => {
                 animate={{
                     width: expanded ? "15vw" : "20vw",
                     height: expanded ? "400px" : "80vh",
-                    borderRadius: "20px",
                     bottom: expanded ? "40%" : "20%",
                 }}
-                transition={{ type: "spring", stiffness: 120, damping: 15 }}
-                className={ `duration-500 ease-in-out bg-transparent text-white outline-white text-2xl font-bold absolute left-1/2 -translate-x-1/2 overflow-x-hidden translate-y-1/2 border-2 transition-[outline] ${expanded ? "outline-[100vw]" : "outline-2"}` }
-            />
+                transition={{ type: "spring", stiffness: 100, damping: 25 }}
+                className={ `absolute left-1/2 -translate-x-1/2 translate-y-1/2 overflow-x-hidden text-2xl font-bold text-white outline-white transition-[outline] duration-700 ease-in-out ${expanded ? "outline-[100vw]" : "outline-0 "}` }
+            >
+                <div className={`rounded-4xl duration-200 h-full w-full bg-transparent outline-white transition-all ${expanded ? "outline-[50px]" : "outline-0 border-2"}`}></div>
+            </motion.div>
             <motion.div 
                 initial={{ opacity: 0, y: 0 }}
                 animate={{ opacity: expanded ? 1 : 0, y: expanded ? 0 : 40 }}
-                transition={{ type: "spring", stiffness: 80, damping: 15 }}
-                className="absolute top-1/4 -translate-x-1/2 -translate-y-1/2 left-1/2 text-black text-8xl font-bold flex items-center justify-center flex-col gap-4"
+                transition={{ type: "spring", stiffness: 60, damping: 30 }}
+                className="absolute left-1/2 top-1/4 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center gap-4 text-8xl font-bold text-black " 
             >
                 Expanded Mode
-                <div className="bg-black rounded-full text-white px-4 py-2 text-xl font-semibold w-max">Click me</div>
+                <div className="w-max rounded-full bg-black px-4 py-2 text-xl font-semibold text-white">Click me</div>
             </motion.div>
 
             <motion.img 
@@ -65,10 +66,9 @@ const TransitionPage = () => {
                     x: expanded ? -100 : 0,
                     scale: expanded ? 1.5 : 1,
                 }}
-                transition={{ type: "spring", stiffness: 80, damping: 15 }}
-                className="w-40 h-auto rounded-lg bg-black absolute top-2/3 -translate-y-1/2 left-2/3 text-black text-8xl font-bold"
-            >
-            </motion.img>
+                transition={{ type: "spring", stiffness: 60, damping: 30 }}
+                className="absolute left-2/3 top-2/3 h-auto w-40 -translate-y-1/2 rounded-lg bg-black text-8xl font-bold text-black"
+            />
 
             <motion.img 
                 src="t-left.webp"
@@ -80,21 +80,17 @@ const TransitionPage = () => {
                     x: expanded ? 100 : 0,
                     scale: expanded ? 1.5 : 1,
                 }}
-                transition={{ type: "spring", stiffness: 80, damping: 15 }}
-                className="w-40 h-auto rounded-lg bg-black absolute top-2/3 -translate-y-1/2 right-2/3 text-black text-8xl font-bold"
-            >
-            </motion.img>
-
-            {/* Text that disappears when expanded */}
+                transition={{ type: "spring", stiffness: 60, damping: 30 }}
+                className="absolute right-2/3 top-2/3 h-auto w-40 -translate-y-1/2 rounded-lg bg-black text-8xl font-bold text-black"
+            />
             <motion.div 
                 initial={{ opacity: 1, y: 0 }}
                 animate={{ opacity: expanded ? 0 : 1, y: expanded ? -50 : 0 }}
-                transition={{ type: "spring", stiffness: 80, damping: 15 }}
-                className="absolute top-40 -translate-y-1/2 left-40 text-white text-8xl font-bold"
+                transition={{ type: "spring", stiffness: 60, damping: 30 }}
+                className="absolute left-40 top-40 -translate-y-1/2 text-8xl font-bold text-white"
             >
                 Normal Mode
             </motion.div>
-
         </div>
     );
 }
