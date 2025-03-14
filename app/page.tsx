@@ -20,7 +20,7 @@ const TransitionPage = () => {
                     // enable scrolling again
                     document.body.style.overflow = "auto";
                     document.body.style.paddingRight = "0px";
-                }, 100);
+                }, 1000);
             } else if (scrollTop <= 30 && expanded) {
                 setExpanded(false);
             }
