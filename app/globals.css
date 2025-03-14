@@ -6,13 +6,14 @@ html, body {
 }
 
 :root {
-    --transition-time: 0.5s;
+    --transition-time: 0.7s;
 }
 
 .container {
-    width: 100%;
+    width: 100vw;
     height: 250vh;
-    overflow-x: hidden;
+    padding-top: 100vh;
+    overflow-x: clip;
     background-color: #4D8BCD;
 }
 
@@ -23,11 +24,6 @@ html, body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    transition: all var(--transition-time) ease-in-out;
-}
-.bg-img.expanded {
-    width: 60%;
-    top: 70%;
 }
 
 .frame {
@@ -35,23 +31,32 @@ html, body {
     left: 50%;
     transform: translate(-50%, 0);
     overflow: hidden;
+    width: 20vw;
+    top: 40%;
     transition: all var(--transition-time) ease-in-out;
-    outline-color: white;
-    outline-style: solid;
-    outline-width: 20px;
-    border-radius: 1px;
+    border-color: white;
+    border-style: solid;
+    border-radius: 30px;
+    border-top-width: 0px;
+    border-left-width: 0px;
+    border-right-width: 0px;
+    border-bottom-width: 0px;
+    height: 80vh;
 }
 .frame.expanded {
-    outline-width: 50vw;
-    width: 15vw;
+    top: 20%;
     height: 400px;
-    bottom: 0%;
+    width: 300px;
+    border-bottom-width: 40vh;
+    border-top-width: 40vh;
+    border-left-width: 50vw;
+    border-right-width: 50vw;
 }
 .frame:not(.expanded) {
-    outline-width: 0px;
-    width: 20vw;
+    width: 400px;
+    top: 40%;
     height: 80vh;
-    bottom: -20%;
+    border-top-width: 0px;
 }
 
 .frame-inner {
@@ -61,21 +66,18 @@ html, body {
     border: 2px solid white;
     border-radius: 30px;
     overflow: hidden;
-    outline: 0px solid white;
-    transition: outline var(--transition-time) ease-in-out;
+    outline: 500px solid white;
+    transition: all var(--transition-time) ease-in-out;
     transition-delay: 0.4;
 }
 .frame-inner.expanded {
-    transition-delay: 0s;
-    border: none;
     outline: 50px solid white;
 }
 
 .expanded-mode {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 40%;
+    right: 33%;
 
     display: flex;
     flex-direction: column;
@@ -83,7 +85,6 @@ html, body {
     justify-content: center;
     gap: 16px;
 
-    transition: all 0.7s ease-in-out;
     font-size: 5rem;
     font-weight: bold;
     color: black;
@@ -91,12 +92,8 @@ html, body {
     opacity: 100;
 }
 .expanded-mode.expanded {
-    opacity: 1;
-    transform: translate(-50%, -100%);
 }
 .expanded-mode:not(.expanded) {
-    opacity: 0;
-    transform: translateY(-50%, 0%);
 }
 
 .click-me {
@@ -122,23 +119,18 @@ html, body {
     font-weight: bold;
     color: black;
     opacity: 0;
-    transition: all var(--transition-time) ease-in-out;
 }
 
 .t-right {
-    left: 64%;
+    left: 70%;
 }
 .t-right.expanded {
-    opacity: 1;
-    transform: translate(-50%, -50%);
 }
 
 .t-left {
-    right: 64%;
+    right: 70%;
 }
 .t-left.expanded {
-    opacity: 1;
-    transform: translate(50%, -50%); 
 }
 
 .normal-mode {
@@ -149,13 +141,14 @@ html, body {
     font-size: 5rem;
     font-weight: bold;
     color: white;
-    transition: all var(--transition-time) ease-in-out;
 }
 .normal-mode.expanded {
-    opacity: 0;
-    transform: translate(-50%, -100%);
 }
 .normal-mode:not(.expanded) {
-    opacity: 1;
-    transform: translateY(-50%, 0%);
+}
+
+.next-section {
+    background-color: white;
+    width: 100%;
+    height: 100vh;
 }
