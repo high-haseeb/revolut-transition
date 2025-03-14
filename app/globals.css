@@ -39,10 +39,9 @@ html, body {
     outline-color: white;
     outline-style: solid;
     outline-width: 20px;
-    border-radius: 30px;
+    border-radius: 1px;
 }
 .frame.expanded {
-    border-radius: 0px;
     outline-width: 50vw;
     width: 15vw;
     height: 400px;
