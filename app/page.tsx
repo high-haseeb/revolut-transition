@@ -11,16 +11,16 @@ const TransitionPage = () => {
             const scrollTop = window.scrollY;
             if (scrollTop > 30 && !expanded) {
                 setExpanded(true);
-                // stop scrolling
                 window.scrollTo({
                     top: 200,
                     behavior: "smooth"
                 });
-                document.body.style.overflow = "hidden";
                 document.body.style.paddingRight = "15px";
+                document.body.style.overflow = "hidden";
+                //document.body.style.position = "fixed"
                 setTimeout(() => {
-                    // enable scrolling again
                     document.body.style.overflow = "auto";
+                    document.body.style.overflowX = "hidden";
                     document.body.style.paddingRight = "0px";
                 }, 1000);
             } else if (scrollTop <= 30 && expanded) {
@@ -33,7 +33,7 @@ const TransitionPage = () => {
     }, [expanded]);
 
     return (
-        <div className="container">
+        <div className="container" id="container">
             <motion.img
                 src="t-img.webp"
                 width={1920}
@@ -101,7 +101,6 @@ const TransitionPage = () => {
             >
                 Normal Mode
             </motion.div>
-            <div className="next-section"></div>
         </div>
     );
 }
